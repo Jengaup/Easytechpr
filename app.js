@@ -128,6 +128,8 @@ const translations = {
 
 let lang = "es";
 
+const HTML_KEYS = new Set(["hero.sub", "testi.q1", "testi.q2", "testi.q3"]);
+
 function applyLang() {
   const t = translations[lang];
   document.querySelectorAll("[data-i18n]").forEach(el => {
@@ -135,8 +137,10 @@ function applyLang() {
     if (!t[key]) return;
     if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
       el.placeholder = t[key];
-    } else {
+    } else if (HTML_KEYS.has(key)) {
       el.innerHTML = t[key];
+    } else {
+      el.textContent = t[key];
     }
   });
   document.documentElement.lang = lang;
