@@ -241,10 +241,17 @@ h3 { font-size: 1.15rem; font-weight: 700; }
   margin-bottom: 8px;
 }
 .brand-name {
-  background: linear-gradient(135deg, var(--orange) 0%, var(--yellow) 50%, var(--green-lt) 100%);
+  background: linear-gradient(270deg, var(--orange), var(--yellow), var(--green-lt), var(--pink), var(--orange));
+  background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: gradient-shift 5s ease infinite;
+}
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 .hero-slogan {
   font-size: clamp(1rem, 2.5vw, 1.4rem);
@@ -636,3 +643,143 @@ h3 { font-size: 1.15rem; font-weight: 700; }
   .hero-cta { flex-direction: column; align-items: center; }
   .hero-cta .btn { width: 100%; justify-content: center; }
 }
+
+/* ─── ORBS ─── */
+.hero-orbs { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.18;
+  animation: orb-float ease-in-out infinite;
+}
+.orb-1 { width: 500px; height: 500px; background: var(--orange); top: -150px; left: -150px; animation-duration: 9s; }
+.orb-2 { width: 400px; height: 400px; background: var(--green); bottom: -100px; right: -100px; animation-duration: 11s; animation-delay: -4s; }
+.orb-3 { width: 350px; height: 350px; background: var(--pink); top: 40%; left: 45%; animation-duration: 13s; animation-delay: -7s; }
+@keyframes orb-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(40px, -40px) scale(1.06); }
+  66%       { transform: translate(-25px, 25px) scale(0.94); }
+}
+
+/* ─── TYPEWRITER ─── */
+.tw-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: var(--orange);
+  margin-left: 2px;
+  vertical-align: middle;
+  border-radius: 1px;
+  animation: tw-blink 0.7s ease-in-out infinite;
+}
+@keyframes tw-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* ─── SCROLL REVEAL ─── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── TESTIMONIALS ─── */
+.testimonials {
+  padding: 100px 0;
+  background: var(--dark);
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.testimonial-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.testimonial-card::before {
+  content: '"';
+  position: absolute;
+  top: -10px; right: 24px;
+  font-size: 8rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--orange);
+  opacity: 0.06;
+}
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  border-color: rgba(255,107,0,0.25);
+}
+.testi-stars { color: var(--yellow); font-size: 1.1rem; letter-spacing: 2px; }
+.testi-quote {
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  font-style: italic;
+  flex: 1;
+}
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.testi-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--orange), var(--yellow));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+}
+.testi-author strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+.testi-author span {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* ─── WHATSAPP BUTTON ─── */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  z-index: 200;
+  width: 58px; height: 58px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 8px 30px rgba(37,211,102,0.45);
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: wa-pop 0.5s 1.5s cubic-bezier(0.175,0.885,0.32,1.275) both;
+}
+.whatsapp-btn:hover {
+  transform: scale(1.12);
+  box-shadow: 0 12px 40px rgba(37,211,102,0.6);
+}
+@keyframes wa-pop {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
