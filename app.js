@@ -3,51 +3,54 @@ const translations = {
   es: {
     "nav.services": "Servicios",
     "nav.why": "Por qué nosotros",
+    "nav.testimonials": "Clientes",
     "nav.contact": "Contacto",
-    "hero.badge": "Para Negocios en Puerto Rico",
-    "hero.slogan": "Simplificando la Tecnología",
-    "hero.sub": "Ayudamos a los negocios a adoptar la tecnología correcta,<br />sin complicaciones y con resultados reales.",
-    "hero.cta1": "Habla con un experto",
-    "hero.cta2": "Ver servicios",
+    "hero.badge": "El aliado tech #1 de Puerto Rico",
+    "hero.slogan": "Tu negocio merece tecnología que sí funciona",
+    "hero.sub": "Cada minuto de falla tecnológica te cuesta dinero.<br />Nosotros lo evitamos — para siempre.",
+    "hero.cta1": "Obtén una consulta gratis",
+    "hero.cta2": "¿Qué podemos hacer por ti?",
     "hero.stat1": "Negocios atendidos",
     "hero.stat3": "Años de experiencia",
     "hero.scroll": "Descubre más",
     "services.tag": "Lo que hacemos",
-    "services.title": "Nuestros Servicios",
-    "services.sub": "Soluciones tecnológicas diseñadas para que tu negocio crezca sin fricciones.",
+    "services.title": "Soluciones que mueven tu negocio",
+    "services.sub": "Tecnología que trabaja para ti — no al revés.",
     "svc.it.title": "Soporte IT",
-    "svc.it.desc": "Mantenimiento preventivo, resolución de problemas y soporte remoto/presencial para mantener tu negocio funcionando sin interrupciones.",
+    "svc.it.desc": "Problemas resueltos antes de que los notes. Soporte remoto y presencial para que tu negocio nunca pare.",
     "svc.net.title": "Redes y Wi-Fi",
-    "svc.net.desc": "Diseño, instalación y configuración de redes empresariales con cobertura total, alta velocidad y máxima confiabilidad.",
-    "svc.net.tag": "Empresarial",
+    "svc.net.desc": "Una red lenta mata ventas. Te damos la infraestructura que tu negocio necesita para operar rápido y sin caídas.",
     "svc.sec.title": "Ciberseguridad",
-    "svc.sec.desc": "Protección integral de tus datos, sistemas y redes. Auditorías de seguridad, firewalls y planes de respuesta ante incidentes.",
-    "svc.sec.tag": "Protección total",
+    "svc.sec.desc": "Un solo ataque puede cerrar tu negocio. Te blindamos con auditorías, firewalls y respuesta ante incidentes para que duermas tranquilo.",
     "svc.app.title": "Desarrollo de Aplicaciones",
-    "svc.app.desc": "Creamos aplicaciones web y móviles a medida para automatizar procesos, mejorar la experiencia de tus clientes y escalar tu negocio.",
-    "svc.app.tag": "A la medida",
+    "svc.app.desc": "Convierte procesos manuales en una máquina automática. Apps web y móviles que trabajan para ti mientras atiendes tu negocio.",
     "svc.con.title": "Consultoría Tecnológica",
-    "svc.con.desc": "Evaluamos tu infraestructura actual y te guiamos hacia las mejores decisiones tecnológicas para reducir costos y aumentar productividad.",
-    "svc.con.tag": "Estratégica",
+    "svc.con.desc": "No compres tecnología a ciegas. Te decimos exactamente qué necesitas, qué te sobra y cómo ahorrar sin sacrificar resultados.",
     "why.tag": "Nuestra diferencia",
     "why.title": "¿Por qué EasyTechPR?",
-    "why.sub": "No somos solo técnicos — somos tu socio tecnológico.",
-    "why.r1.title": "Soluciones simples",
-    "why.r1.desc": "Traducimos el lenguaje técnico en soluciones que tu equipo puede entender y usar desde el primer día.",
-    "why.r2.title": "Enfocados en tu negocio",
-    "why.r2.desc": "Cada solución está diseñada con tus objetivos en mente, no solamente para instalar tecnología.",
-    "why.r3.title": "Respuesta rápida",
-    "why.r3.desc": "Soporte local en Puerto Rico con tiempos de respuesta reales — cuando hay un problema, estamos ahí.",
-    "why.r4.title": "Precios transparentes",
-    "why.r4.desc": "Sin sorpresas ni letra pequeña. Sabes exactamente lo que pagas y lo que obtienes.",
-    "why.cta": "Comienza hoy",
+    "why.sub": "No somos solo técnicos — somos el equipo que hace crecer tu negocio.",
+    "why.r1.title": "Sin jerigonza técnica",
+    "why.r1.desc": "Te hablamos en tu idioma. Soluciones que tu equipo entiende y usa desde el primer día, sin curva de aprendizaje.",
+    "why.r2.title": "Obsesionados con tu éxito",
+    "why.r2.desc": "No instalamos tecnología por instalarla. Cada decisión que tomamos tiene un solo objetivo: que tu negocio gane más.",
+    "why.r3.title": "Aquí cuando más lo necesitas",
+    "why.r3.desc": "Soporte local en Puerto Rico. Cuando algo falla, no esperas horas — estamos ahí, rápido y de verdad.",
+    "why.r4.title": "Precios sin letra pequeña",
+    "why.r4.desc": "Cero sorpresas. Sabes exactamente lo que pagas, lo que obtienes y el resultado que puedes esperar.",
+    "why.cta": "Empieza hoy — es gratis",
+    "testi.tag": "Lo que dicen nuestros clientes",
+    "testi.title": "Resultados reales, negocios reales",
+    "testi.sub": "Más de 150 negocios en Puerto Rico ya confían en nosotros.",
+    "testi.q1": "\"Antes perdíamos horas por problemas de red. EasyTechPR llegó, lo resolvió y nunca más tuvimos ese problema. Vale cada centavo.\"",
+    "testi.q2": "\"Nos hicieron una app que automatizó nuestras reservaciones. Lo que antes tomaba horas, ahora pasa solo. Increíble.\"",
+    "testi.q3": "\"La consultoría nos ahorró miles de dólares en tecnología que no necesitábamos. Ojalá los hubiéramos encontrado antes.\"",
     "contact.tag": "Hablemos",
-    "contact.title": "Contáctanos",
-    "contact.sub": "Cuéntanos sobre tu negocio y cómo podemos ayudarte.",
+    "contact.title": "Da el primer paso hoy",
+    "contact.sub": "Una conversación puede cambiar el rumbo de tu negocio. Y es completamente gratis.",
     "contact.email": "Email",
     "contact.phone": "Teléfono",
     "contact.location": "Ubicación",
-    "contact.promise": "Respondemos en menos de 24 horas. Tu negocio no puede esperar, y nosotros lo sabemos.",
+    "contact.promise": "¿Listo para crecer? Escríbenos ahora — respondemos hoy mismo y la primera consulta es completamente gratis.",
     "form.name": "Nombre / Empresa",
     "form.email": "Correo electrónico",
     "form.phone": "Teléfono",
@@ -56,57 +59,60 @@ const translations = {
     "form.message": "Mensaje",
     "form.submit": "Enviar mensaje",
     "form.success": "¡Mensaje enviado! Te contactaremos pronto.",
-    "footer.slogan": "Simplificando la Tecnología",
+    "footer.slogan": "Tu negocio merece tecnología que sí funciona",
     "footer.copy": "© 2025 EasyTechPR. Todos los derechos reservados.",
   },
   en: {
     "nav.services": "Services",
     "nav.why": "Why us",
+    "nav.testimonials": "Clients",
     "nav.contact": "Contact",
-    "hero.badge": "For Businesses in Puerto Rico",
-    "hero.slogan": "Simplifying Technology",
-    "hero.sub": "We help businesses adopt the right technology,<br />without the complexity and with real results.",
-    "hero.cta1": "Talk to an expert",
-    "hero.cta2": "View services",
+    "hero.badge": "Puerto Rico's #1 Tech Partner",
+    "hero.slogan": "Your business deserves technology that actually works",
+    "hero.sub": "Every minute of tech failure costs you money.<br />We prevent it — for good.",
+    "hero.cta1": "Get a free consultation",
+    "hero.cta2": "What can we do for you?",
     "hero.stat1": "Businesses served",
     "hero.stat3": "Years of experience",
     "hero.scroll": "Discover more",
     "services.tag": "What we do",
-    "services.title": "Our Services",
-    "services.sub": "Technology solutions designed to help your business grow without friction.",
+    "services.title": "Solutions that move your business",
+    "services.sub": "Technology that works for you — not the other way around.",
     "svc.it.title": "IT Support",
-    "svc.it.desc": "Preventive maintenance, troubleshooting, and remote/on-site support to keep your business running without interruptions.",
+    "svc.it.desc": "Problems solved before you notice them. Remote and on-site support so your business never stops.",
     "svc.net.title": "Networks & Wi-Fi",
-    "svc.net.desc": "Design, installation, and configuration of enterprise networks with full coverage, high speed, and maximum reliability.",
-    "svc.net.tag": "Enterprise",
+    "svc.net.desc": "A slow network kills sales. We give you the infrastructure your business needs to run fast without downtime.",
     "svc.sec.title": "Cybersecurity",
-    "svc.sec.desc": "Comprehensive protection for your data, systems, and networks. Security audits, firewalls, and incident response plans.",
-    "svc.sec.tag": "Full protection",
+    "svc.sec.desc": "One attack can shut down your business. We protect you with audits, firewalls, and incident response so you can sleep easy.",
     "svc.app.title": "App Development",
-    "svc.app.desc": "We build custom web and mobile applications to automate processes, improve your customer experience, and scale your business.",
-    "svc.app.tag": "Custom built",
+    "svc.app.desc": "Turn manual processes into an automated machine. Web and mobile apps that work for you while you focus on your business.",
     "svc.con.title": "Technology Consulting",
-    "svc.con.desc": "We evaluate your current infrastructure and guide you toward the best technology decisions to reduce costs and increase productivity.",
-    "svc.con.tag": "Strategic",
+    "svc.con.desc": "Don't buy technology blindly. We tell you exactly what you need, what you don't, and how to save money without sacrificing results.",
     "why.tag": "Our difference",
     "why.title": "Why EasyTechPR?",
-    "why.sub": "We're not just technicians — we're your technology partner.",
-    "why.r1.title": "Simple solutions",
-    "why.r1.desc": "We translate technical language into solutions your team can understand and use from day one.",
-    "why.r2.title": "Business focused",
-    "why.r2.desc": "Every solution is designed with your goals in mind, not just to install technology.",
-    "why.r3.title": "Fast response",
-    "why.r3.desc": "Local support in Puerto Rico with real response times — when there's a problem, we're there.",
-    "why.r4.title": "Transparent pricing",
-    "why.r4.desc": "No surprises or fine print. You know exactly what you pay and what you get.",
-    "why.cta": "Get started today",
+    "why.sub": "We're not just technicians — we're the team that grows your business.",
+    "why.r1.title": "No tech jargon",
+    "why.r1.desc": "We speak your language. Solutions your team understands and uses from day one, with no learning curve.",
+    "why.r2.title": "Obsessed with your success",
+    "why.r2.desc": "We don't install technology for the sake of it. Every decision we make has one goal: making your business more profitable.",
+    "why.r3.title": "Here when you need us most",
+    "why.r3.desc": "Local support in Puerto Rico. When something fails, you don't wait hours — we're there, fast and for real.",
+    "why.r4.title": "No hidden fees",
+    "why.r4.desc": "Zero surprises. You know exactly what you pay, what you get, and what results to expect.",
+    "why.cta": "Start today — it's free",
+    "testi.tag": "What our clients say",
+    "testi.title": "Real results, real businesses",
+    "testi.sub": "Over 150 businesses in Puerto Rico already trust us.",
+    "testi.q1": "\"We used to lose hours to network problems. EasyTechPR came in, fixed it, and we've never had that issue again. Worth every penny.\"",
+    "testi.q2": "\"They built an app that automated our reservations. What used to take hours now happens automatically. Incredible.\"",
+    "testi.q3": "\"The consulting saved us thousands of dollars on technology we didn't need. We wish we'd found them sooner.\"",
     "contact.tag": "Let's talk",
-    "contact.title": "Contact us",
-    "contact.sub": "Tell us about your business and how we can help.",
+    "contact.title": "Take the first step today",
+    "contact.sub": "One conversation can change the direction of your business. And it's completely free.",
     "contact.email": "Email",
     "contact.phone": "Phone",
     "contact.location": "Location",
-    "contact.promise": "We respond in less than 24 hours. Your business can't wait, and we know it.",
+    "contact.promise": "Ready to grow? Write to us now — we respond today and the first consultation is completely free.",
     "form.name": "Name / Company",
     "form.email": "Email address",
     "form.phone": "Phone number",
@@ -115,7 +121,7 @@ const translations = {
     "form.message": "Message",
     "form.submit": "Send message",
     "form.success": "Message sent! We'll be in touch soon.",
-    "footer.slogan": "Simplifying Technology",
+    "footer.slogan": "Your business deserves technology that actually works",
     "footer.copy": "© 2025 EasyTechPR. All rights reserved.",
   }
 };
@@ -141,6 +147,7 @@ function applyLang() {
 document.getElementById("langToggle").addEventListener("click", () => {
   lang = lang === "es" ? "en" : "es";
   applyLang();
+  startTypewriter();
 });
 
 /* ─── NAVBAR SCROLL ─── */
@@ -181,19 +188,79 @@ function createParticle() {
 for (let i = 0; i < 20; i++) createParticle();
 setInterval(createParticle, 1200);
 
+/* ─── TYPEWRITER ─── */
+let typewriterTimer = null;
+
+function startTypewriter() {
+  const el = document.getElementById("typewriterTarget");
+  if (!el) return;
+  const text = translations[lang]["hero.slogan"];
+  clearTimeout(typewriterTimer);
+  el.innerHTML = '<span class="tw-cursor"></span>';
+  let i = 0;
+  function type() {
+    if (i <= text.length) {
+      el.innerHTML = text.slice(0, i) + '<span class="tw-cursor"></span>';
+      i++;
+      typewriterTimer = setTimeout(type, 45);
+    }
+  }
+  type();
+}
+
+/* ─── ANIMATED COUNTERS ─── */
+function animateCounter(el) {
+  const target = parseInt(el.getAttribute("data-count"), 10);
+  const duration = 1800;
+  const step = 16;
+  const increments = Math.ceil(duration / step);
+  let current = 0;
+  const timer = setInterval(() => {
+    current++;
+    el.textContent = Math.round((target / increments) * current);
+    if (current >= increments) {
+      el.textContent = target;
+      clearInterval(timer);
+    }
+  }, step);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting && !e.target.dataset.counted) {
+      e.target.dataset.counted = "1";
+      animateCounter(e.target);
+      counterObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll("[data-count]").forEach(el => counterObserver.observe(el));
+
 /* ─── SCROLL REVEAL ─── */
-const observer = new IntersectionObserver((entries) => {
+const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
-      e.target.style.opacity = "1";
-      e.target.style.transform = "translateY(0)";
+      const delay = e.target.dataset.revealDelay || 0;
+      setTimeout(() => e.target.classList.add("revealed"), parseInt(delay));
+      revealObserver.unobserve(e.target);
     }
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll(".service-card, .why-card, .contact-wrap").forEach(el => {
-  el.style.cssText += "opacity:0; transform:translateY(30px); transition:opacity 0.6s ease, transform 0.6s ease;";
-  observer.observe(el);
+document.querySelectorAll("[data-reveal]").forEach(el => revealObserver.observe(el));
+
+/* ─── 3D TILT ON CARDS ─── */
+document.querySelectorAll(".service-card").forEach(card => {
+  card.addEventListener("mousemove", e => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width  - 0.5;
+    const y = (e.clientY - rect.top)  / rect.height - 0.5;
+    card.style.transform = `perspective(600px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) translateY(-6px)`;
+  });
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "";
+  });
 });
 
 /* ─── FORM ─── */
@@ -235,3 +302,6 @@ window.addEventListener("scroll", () => {
     if (link) link.style.color = scrollY >= top && scrollY < top + h ? "var(--orange)" : "";
   });
 }, { passive: true });
+
+/* ─── INIT ─── */
+startTypewriter();

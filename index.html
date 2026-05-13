@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EasyTechPR – Simplificando la Tecnología</title>
-  <meta name="description" content="EasyTechPR ayuda a los negocios a simplificar la tecnología. Soporte IT, Redes, Ciberseguridad, Desarrollo de Apps y Consultoría." />
+  <title>EasyTechPR – Tu negocio merece tecnología que sí funciona</title>
+  <meta name="description" content="EasyTechPR es el aliado tech #1 de Puerto Rico. Soporte IT, Redes, Ciberseguridad, Apps y Consultoría para que tu negocio nunca pare." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -23,6 +23,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="#services" data-i18n="nav.services">Servicios</a></li>
         <li><a href="#why" data-i18n="nav.why">Por qué nosotros</a></li>
+        <li><a href="#testimonials" data-i18n="nav.testimonials">Clientes</a></li>
         <li><a href="#contact" data-i18n="nav.contact">Contacto</a></li>
         <li>
           <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
@@ -42,9 +43,14 @@
   <section class="hero" id="hero">
     <div class="hero-bg-grid"></div>
     <div class="hero-particles" id="particles"></div>
+    <div class="hero-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
 
     <div class="hero-content">
-      <div class="hero-badge" data-i18n="hero.badge">Para Negocios en Puerto Rico</div>
+      <div class="hero-badge" data-i18n="hero.badge">El aliado tech #1 de Puerto Rico</div>
 
       <div class="hero-logo-wrap">
         <img src="Easy Tech PR.png" alt="EasyTechPR logo" class="hero-logo-img" />
@@ -53,24 +59,24 @@
       <h1 class="hero-title">
         <span class="brand-name">easytechpr</span>
       </h1>
-      <p class="hero-slogan" data-i18n="hero.slogan">Simplificando la Tecnología</p>
+      <p class="hero-slogan" id="typewriterTarget" data-i18n="hero.slogan">Tu negocio merece tecnología que sí funciona</p>
       <p class="hero-sub" data-i18n="hero.sub">
-        Ayudamos a los negocios a adoptar la tecnología correcta,<br />sin complicaciones y con resultados reales.
+        Cada minuto de falla tecnológica te cuesta dinero.<br />Nosotros lo evitamos — para siempre.
       </p>
 
       <div class="hero-cta">
-        <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">Habla con un experto</a>
-        <a href="#services" class="btn btn-ghost" data-i18n="hero.cta2">Ver servicios</a>
+        <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">Obtén una consulta gratis</a>
+        <a href="#services" class="btn btn-ghost" data-i18n="hero.cta2">¿Qué podemos hacer por ti?</a>
       </div>
 
       <div class="hero-stats">
         <div class="stat">
-          <span class="stat-num">+150</span>
+          <span class="stat-num" data-count="150">0</span><span class="stat-num">+</span>
           <span class="stat-label" data-i18n="hero.stat1">Negocios atendidos</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat">
-          <span class="stat-num">10+</span>
+          <span class="stat-num" data-count="10">0</span><span class="stat-num">+</span>
           <span class="stat-label" data-i18n="hero.stat3">Años de experiencia</span>
         </div>
       </div>
@@ -85,52 +91,52 @@
   <!-- ─── SERVICES ─── -->
   <section class="services" id="services">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <span class="section-tag" data-i18n="services.tag">Lo que hacemos</span>
-        <h2 data-i18n="services.title">Nuestros Servicios</h2>
-        <p data-i18n="services.sub">Soluciones tecnológicas diseñadas para que tu negocio crezca sin fricciones.</p>
+        <h2 data-i18n="services.title">Soluciones que mueven tu negocio</h2>
+        <p data-i18n="services.sub">Tecnología que trabaja para ti — no al revés.</p>
       </div>
 
       <div class="services-grid">
 
-        <div class="service-card" style="--accent:#FF6B00">
+        <div class="service-card" style="--accent:#FF6B00" data-reveal data-reveal-delay="0">
           <div class="service-icon">
             <svg viewBox="0 0 48 48" fill="none"><rect x="6" y="10" width="36" height="24" rx="3" stroke="currentColor" stroke-width="2.5"/><path d="M16 38h16M24 34v4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M10 26h28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="19" r="4" stroke="currentColor" stroke-width="2"/></svg>
           </div>
           <h3 data-i18n="svc.it.title">Soporte IT</h3>
-          <p data-i18n="svc.it.desc">Mantenimiento preventivo, resolución de problemas y soporte remoto/presencial para mantener tu negocio funcionando sin interrupciones.</p>
+          <p data-i18n="svc.it.desc">Problemas resueltos antes de que los notes. Soporte remoto y presencial para que tu negocio nunca pare.</p>
         </div>
 
-        <div class="service-card" style="--accent:#4AAD00">
+        <div class="service-card" style="--accent:#4AAD00" data-reveal data-reveal-delay="100">
           <div class="service-icon">
             <svg viewBox="0 0 48 48" fill="none"><path d="M8 24h32M24 8v32" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2.5"/><ellipse cx="24" cy="24" rx="8" ry="16" stroke="currentColor" stroke-width="2"/></svg>
           </div>
           <h3 data-i18n="svc.net.title">Redes y Wi-Fi</h3>
-          <p data-i18n="svc.net.desc">Diseño, instalación y configuración de redes empresariales con cobertura total, alta velocidad y máxima confiabilidad.</p>
+          <p data-i18n="svc.net.desc">Una red lenta mata ventas. Te damos la infraestructura que tu negocio necesita para operar rápido y sin caídas.</p>
         </div>
 
-        <div class="service-card" style="--accent:#E91E8C">
+        <div class="service-card" style="--accent:#E91E8C" data-reveal data-reveal-delay="200">
           <div class="service-icon">
             <svg viewBox="0 0 48 48" fill="none"><path d="M24 6L8 14v10c0 9.94 6.84 19.24 16 22 9.16-2.76 16-12.06 16-22V14L24 6Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M18 24l4 4 8-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <h3 data-i18n="svc.sec.title">Ciberseguridad</h3>
-          <p data-i18n="svc.sec.desc">Protección integral de tus datos, sistemas y redes. Auditorías de seguridad, firewalls y planes de respuesta ante incidentes.</p>
+          <p data-i18n="svc.sec.desc">Un solo ataque puede cerrar tu negocio. Te blindamos con auditorías, firewalls y respuesta ante incidentes para que duermas tranquilo.</p>
         </div>
 
-        <div class="service-card" style="--accent:#FFB800">
+        <div class="service-card" style="--accent:#FFB800" data-reveal data-reveal-delay="0">
           <div class="service-icon">
             <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="8" width="14" height="14" rx="2" stroke="currentColor" stroke-width="2.5"/><rect x="26" y="8" width="14" height="14" rx="2" stroke="currentColor" stroke-width="2.5"/><rect x="8" y="26" width="14" height="14" rx="2" stroke="currentColor" stroke-width="2.5"/><path d="M26 33h14M33 26v14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
           </div>
           <h3 data-i18n="svc.app.title">Desarrollo de Aplicaciones</h3>
-          <p data-i18n="svc.app.desc">Creamos aplicaciones web y móviles a medida para automatizar procesos, mejorar la experiencia de tus clientes y escalar tu negocio.</p>
+          <p data-i18n="svc.app.desc">Convierte procesos manuales en una máquina automática. Apps web y móviles que trabajan para ti mientras atiendes tu negocio.</p>
         </div>
 
-        <div class="service-card" style="--accent:#7B61FF">
+        <div class="service-card" style="--accent:#7B61FF" data-reveal data-reveal-delay="100">
           <div class="service-icon">
             <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2.5"/><path d="M24 16v8l6 3" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 10l2 4M34 10l-2 4M10 14l4 2M38 14l-4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </div>
           <h3 data-i18n="svc.con.title">Consultoría Tecnológica</h3>
-          <p data-i18n="svc.con.desc">Evaluamos tu infraestructura actual y te guiamos hacia las mejores decisiones tecnológicas para reducir costos y aumentar productividad.</p>
+          <p data-i18n="svc.con.desc">No compres tecnología a ciegas. Te decimos exactamente qué necesitas, qué te sobra y cómo ahorrar sin sacrificar resultados.</p>
         </div>
 
       </div>
@@ -141,37 +147,86 @@
   <section class="why" id="why">
     <div class="why-bg"></div>
     <div class="container">
-      <div class="section-head light">
+      <div class="section-head light" data-reveal>
         <span class="section-tag" data-i18n="why.tag">Nuestra diferencia</span>
         <h2 data-i18n="why.title">¿Por qué EasyTechPR?</h2>
-        <p data-i18n="why.sub">No somos solo técnicos — somos tu socio tecnológico.</p>
+        <p data-i18n="why.sub">No somos solo técnicos — somos el equipo que hace crecer tu negocio.</p>
       </div>
 
       <div class="why-grid">
-        <div class="why-card">
+        <div class="why-card" data-reveal data-reveal-delay="0">
           <div class="why-num">01</div>
-          <h3 data-i18n="why.r1.title">Soluciones simples</h3>
-          <p data-i18n="why.r1.desc">Traducimos el lenguaje técnico en soluciones que tu equipo puede entender y usar desde el primer día.</p>
+          <h3 data-i18n="why.r1.title">Sin jerigonza técnica</h3>
+          <p data-i18n="why.r1.desc">Te hablamos en tu idioma. Soluciones que tu equipo entiende y usa desde el primer día, sin curva de aprendizaje.</p>
         </div>
-        <div class="why-card">
+        <div class="why-card" data-reveal data-reveal-delay="100">
           <div class="why-num">02</div>
-          <h3 data-i18n="why.r2.title">Enfocados en tu negocio</h3>
-          <p data-i18n="why.r2.desc">Cada solución está diseñada con tus objetivos en mente, no solamente para instalar tecnología.</p>
+          <h3 data-i18n="why.r2.title">Obsesionados con tu éxito</h3>
+          <p data-i18n="why.r2.desc">No instalamos tecnología por instalarla. Cada decisión que tomamos tiene un solo objetivo: que tu negocio gane más.</p>
         </div>
-        <div class="why-card">
+        <div class="why-card" data-reveal data-reveal-delay="200">
           <div class="why-num">03</div>
-          <h3 data-i18n="why.r3.title">Respuesta rápida</h3>
-          <p data-i18n="why.r3.desc">Soporte local en Puerto Rico con tiempos de respuesta reales — cuando hay un problema, estamos ahí.</p>
+          <h3 data-i18n="why.r3.title">Aquí cuando más lo necesitas</h3>
+          <p data-i18n="why.r3.desc">Soporte local en Puerto Rico. Cuando algo falla, no esperas horas — estamos ahí, rápido y de verdad.</p>
         </div>
-        <div class="why-card">
+        <div class="why-card" data-reveal data-reveal-delay="300">
           <div class="why-num">04</div>
-          <h3 data-i18n="why.r4.title">Precios transparentes</h3>
-          <p data-i18n="why.r4.desc">Sin sorpresas ni letra pequeña. Sabes exactamente lo que pagas y lo que obtienes.</p>
+          <h3 data-i18n="why.r4.title">Precios sin letra pequeña</h3>
+          <p data-i18n="why.r4.desc">Cero sorpresas. Sabes exactamente lo que pagas, lo que obtienes y el resultado que puedes esperar.</p>
         </div>
       </div>
 
       <div class="why-cta">
-        <a href="#contact" class="btn btn-primary" data-i18n="why.cta">Comienza hoy</a>
+        <a href="#contact" class="btn btn-primary" data-i18n="why.cta">Empieza hoy — es gratis</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TESTIMONIALS ─── -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="section-tag" data-i18n="testi.tag">Lo que dicen nuestros clientes</span>
+        <h2 data-i18n="testi.title">Resultados reales, negocios reales</h2>
+        <p data-i18n="testi.sub">Más de 150 negocios en Puerto Rico ya confían en nosotros.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card" data-reveal data-reveal-delay="0">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote" data-i18n="testi.q1">"Antes perdíamos horas por problemas de red. EasyTechPR llegó, lo resolvió y nunca más tuvimos ese problema. Vale cada centavo."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">CR</div>
+            <div>
+              <strong>Carlos Rivera</strong>
+              <span>Restaurante La Terraza, Ponce</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" data-reveal data-reveal-delay="150">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote" data-i18n="testi.q2">"Nos hicieron una app que automatizó nuestras reservaciones. Lo que antes tomaba horas, ahora pasa solo. Increíble."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">ML</div>
+            <div>
+              <strong>María López</strong>
+              <span>Clínica BienStar, Bayamón</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" data-reveal data-reveal-delay="300">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote" data-i18n="testi.q3">"La consultoría nos ahorró miles de dólares en tecnología que no necesitábamos. Ojalá los hubiéramos encontrado antes."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">JM</div>
+            <div>
+              <strong>José Martínez</strong>
+              <span>Ferretería El Progreso, Caguas</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -179,13 +234,13 @@
   <!-- ─── CONTACT ─── -->
   <section class="contact" id="contact">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <span class="section-tag" data-i18n="contact.tag">Hablemos</span>
-        <h2 data-i18n="contact.title">Contáctanos</h2>
-        <p data-i18n="contact.sub">Cuéntanos sobre tu negocio y cómo podemos ayudarte.</p>
+        <h2 data-i18n="contact.title">Da el primer paso hoy</h2>
+        <p data-i18n="contact.sub">Una conversación puede cambiar el rumbo de tu negocio. Y es completamente gratis.</p>
       </div>
 
-      <div class="contact-wrap">
+      <div class="contact-wrap" data-reveal>
         <div class="contact-info">
           <div class="info-item">
             <div class="info-icon">
@@ -216,7 +271,7 @@
           </div>
 
           <div class="contact-gradient-box">
-            <p data-i18n="contact.promise">Respondemos en menos de 24 horas. Tu negocio no puede esperar, y nosotros lo sabemos.</p>
+            <p data-i18n="contact.promise">¿Listo para crecer? Escríbenos ahora — respondemos hoy mismo y la primera consulta es completamente gratis.</p>
           </div>
         </div>
 
@@ -266,13 +321,18 @@
           <img src="Easy Tech PR.png" alt="EasyTechPR logo" class="logo-img" />
           <div>
             <span class="logo-text">easytechpr</span>
-            <small data-i18n="footer.slogan">Simplificando la Tecnología</small>
+            <small data-i18n="footer.slogan">Tu negocio merece tecnología que sí funciona</small>
           </div>
         </div>
         <p class="footer-copy" data-i18n="footer.copy">© 2025 EasyTechPR. Todos los derechos reservados.</p>
       </div>
     </div>
   </footer>
+
+  <!-- ─── WHATSAPP BUTTON ─── -->
+  <a href="https://wa.me/17876021066" class="whatsapp-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
 
   <script src="app.js"></script>
 </body>
