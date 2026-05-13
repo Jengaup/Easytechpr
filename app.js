@@ -199,12 +199,31 @@ document.querySelectorAll(".service-card, .why-card, .contact-wrap").forEach(el 
 });
 
 /* ─── FORM ─── */
-document.getElementById("contactForm").addEventListener("submit", (e) => {
+document.getElementById("contactForm").addEventListener("submit", async (e) => {
   e.preventDefault();
+  const form    = e.target;
+  const btn     = form.querySelector("button[type=submit]");
   const success = document.getElementById("formSuccess");
-  success.classList.add("show");
-  e.target.reset();
-  setTimeout(() => success.classList.remove("show"), 5000);
+
+  btn.disabled = true;
+  btn.textContent = lang === "es" ? "Enviando…" : "Sending…";
+
+  try {
+    const data = new FormData(form);
+    const res  = await fetch(form.action, { method: "POST", body: data, headers: { Accept: "application/json" } });
+    if (res.ok) {
+      success.classList.add("show");
+      form.reset();
+      setTimeout(() => success.classList.remove("show"), 6000);
+    } else {
+      alert(lang === "es" ? "Error al enviar. Intenta de nuevo." : "Send error. Please try again.");
+    }
+  } catch {
+    alert(lang === "es" ? "Error de red. Verifica tu conexión." : "Network error. Check your connection.");
+  } finally {
+    btn.disabled = false;
+    btn.textContent = translations[lang]["form.submit"];
+  }
 });
 
 /* ─── ACTIVE NAV LINKS ─── */
