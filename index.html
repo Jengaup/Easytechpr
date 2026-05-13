@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EasyTechPR – Simplificando la Tecnología</title>
+  <meta name="description" content="EasyTechPR ayuda a los negocios a simplificar la tecnología. Soporte IT, Redes, Ciberseguridad, Desarrollo de Apps y Consultoría." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ─── NAVBAR ─── -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <svg class="logo-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="EasyTechPR logo">
+          <defs>
+            <linearGradient id="gOrange" x1="30" y1="20" x2="90" y2="100" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#FFB800"/>
+              <stop offset="100%" stop-color="#FF6B00"/>
+            </linearGradient>
+            <linearGradient id="gGreen" x1="10" y1="10" x2="80" y2="70" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#7ED321"/>
+              <stop offset="100%" stop-color="#4AAD00"/>
+            </linearGradient>
+            <linearGradient id="gPink" x1="40" y1="70" x2="100" y2="110" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#E91E8C"/>
+              <stop offset="100%" stop-color="#C2185B"/>
+            </linearGradient>
+          </defs>
+          <!-- outer orange/yellow ring -->
+          <path d="M60 8 C28 8 8 32 8 60 C8 88 28 112 60 112 C80 112 96 102 106 86 L88 78 C82 88 72 94 60 94 C38 94 26 78 26 60 C26 42 38 26 60 26 C72 26 82 32 88 42 L106 34 C96 18 80 8 60 8 Z" fill="url(#gOrange)"/>
+          <!-- green sweep top -->
+          <path d="M60 8 C80 8 96 18 106 34 L88 42 C82 32 72 26 60 26 C46 26 35 33 28 44 L10 36 C20 20 38 8 60 8 Z" fill="url(#gGreen)"/>
+          <!-- pink bottom curl -->
+          <path d="M88 78 L106 86 C100 96 90 104 78 108 L70 92 C76 89 83 84 88 78 Z" fill="url(#gPink)"/>
+          <!-- white e cutout highlight -->
+          <ellipse cx="62" cy="38" rx="10" ry="6" fill="white" opacity="0.9"/>
+        </svg>
+        <span class="logo-text">easytechpr</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services" data-i18n="nav.services">Servicios</a></li>
+        <li><a href="#why" data-i18n="nav.why">Por qué nosotros</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contacto</a></li>
+        <li>
+          <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
+            <span class="lang-flag">🇵🇷</span>
+            <span class="lang-label" id="langLabel">EN</span>
+          </button>
+        </li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-particles" id="particles"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge" data-i18n="hero.badge">Para Negocios en Puerto Rico</div>
+
+      <div class="hero-logo-wrap">
+        <svg class="hero-logo-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="hOrange" x1="50" y1="30" x2="150" y2="170" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#FFB800"/>
+              <stop offset="100%" stop-color="#FF6B00"/>
+            </linearGradient>
+            <linearGradient id="hGreen" x1="20" y1="20" x2="130" y2="110" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#7ED321"/>
+              <stop offset="100%" stop-color="#4AAD00"/>
+            </linearGradient>
+            <linearGradient id="hPink" x1="70" y1="120" x2="170" y2="185" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#E91E8C"/>
+              <stop offset="100%" stop-color="#C2185B"/>
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+              <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <path d="M100 15 C47 15 15 54 15 100 C15 146 47 185 100 185 C133 185 160 170 177 144 L148 130 C137 147 120 157 100 157 C63 157 43 130 43 100 C43 70 63 43 100 43 C120 43 137 53 148 70 L177 56 C160 30 133 15 100 15 Z" fill="url(#hOrange)" filter="url(#glow)"/>
+          <path d="M100 15 C133 15 160 30 177 56 L148 70 C137 53 120 43 100 43 C77 43 58 57 47 73 L17 59 C33 34 64 15 100 15 Z" fill="url(#hGreen)" filter="url(#glow)"/>
+          <path d="M148 130 L177 144 C165 162 148 175 128 181 L116 154 C127 149 139 141 148 130 Z" fill="url(#hPink)" filter="url(#glow)"/>
+          <ellipse cx="105" cy="63" rx="17" ry="10" fill="white" opacity="0.85"/>
+        </svg>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="brand-name">easytechpr</span>
+      </h1>
+      <p class="hero-slogan" data-i18n="hero.slogan">Simplificando la Tecnología</p>
+      <p class="hero-sub" data-i18n="hero.sub">
+        Ayudamos a los negocios a adoptar la tecnología correcta,<br />sin complicaciones y con resultados reales.
+      </p>
+
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">Habla con un experto</a>
+        <a href="#services" class="btn btn-ghost" data-i18n="hero.cta2">Ver servicios</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">+150</span>
+          <span class="stat-label" data-i18n="hero.stat1">Negocios atendidos</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">24/7</span>
+          <span class="stat-label" data-i18n="hero.stat2">Soporte disponible</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">10+</span>
+          <span class="stat-label" data-i18n="hero.stat3">Años de experiencia</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span data-i18n="hero.scroll">Descubre más</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 9l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+  </section>
+
+  <!-- ─── SERVICES ─── -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag" data-i18n="services.tag">Lo que hacemos</span>
+        <h2 data-i18n="services.title">Nuestros Servicios</h2>
+        <p data-i18n="services.sub">Soluciones tecnológicas diseñadas para que tu negocio crezca sin fricciones.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card" style="--accent:#FF6B00">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none"><rect x="6" y="10" width="36" height="24" rx="3" stroke="currentColor" stroke-width="2.5"/><path d="M16 38h16M24 34v4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M10 26h28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="19" r="4" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <h3 data-i18n="svc.it.title">Soporte IT</h3>
+          <p data-i18n="svc.it.desc">Mantenimiento preventivo, resolución de problemas y soporte remoto/presencial para mantener tu negocio funcionando sin interrupciones.</p>
+          <div class="service-tag" data-i18n="svc.it.tag">24/7 Disponible</div>
+        </div>
+
+        <div class="service-card" style="--accent:#4AAD00">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M8 24h32M24 8v32" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2.5"/><ellipse cx="24" cy="24" rx="8" ry="16" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <h3 data-i18n="svc.net.title">Redes y Wi-Fi</h3>
+          <p data-i18n="svc.net.desc">Diseño, instalación y configuración de redes empresariales con cobertura total, alta velocidad y máxima confiabilidad.</p>
+          <div class="service-tag" data-i18n="svc.net.tag">Empresarial</div>
+        </div>
+
+        <div class="service-card" style="--accent:#E91E8C">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M24 6L8 14v10c0 9.94 6.84 19.24 16 22 9.16-2.76 16-12.06 16-22V14L24 6Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M18 24l4 4 8-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 data-i18n="svc.sec.title">Ciberseguridad</h3>
+          <p data-i18n="svc.sec.desc">Protección integral de tus datos, sistemas y redes. Auditorías de seguridad, firewalls y planes de respuesta ante incidentes.</p>
+          <div class="service-tag" data-i18n="svc.sec.tag">Protección total</div>
+        </div>
+
+        <div class="service-card" style="--accent:#FFB800">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="8" width="14" height="14" rx="2" stroke="currentColor" stroke-width="2.5"/><rect x="26" y="8" width="14" height="14" rx="2" stroke="currentColor" stroke-width="2.5"/><rect x="8" y="26" width="14" height="14" rx="2" stroke="currentColor" stroke-width="2.5"/><path d="M26 33h14M33 26v14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3 data-i18n="svc.app.title">Desarrollo de Aplicaciones</h3>
+          <p data-i18n="svc.app.desc">Creamos aplicaciones web y móviles a medida para automatizar procesos, mejorar la experiencia de tus clientes y escalar tu negocio.</p>
+          <div class="service-tag" data-i18n="svc.app.tag">A la medida</div>
+        </div>
+
+        <div class="service-card" style="--accent:#7B61FF">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2.5"/><path d="M24 16v8l6 3" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 10l2 4M34 10l-2 4M10 14l4 2M38 14l-4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3 data-i18n="svc.con.title">Consultoría Tecnológica</h3>
+          <p data-i18n="svc.con.desc">Evaluamos tu infraestructura actual y te guiamos hacia las mejores decisiones tecnológicas para reducir costos y aumentar productividad.</p>
+          <div class="service-tag" data-i18n="svc.con.tag">Estratégica</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHY US ─── -->
+  <section class="why" id="why">
+    <div class="why-bg"></div>
+    <div class="container">
+      <div class="section-head light">
+        <span class="section-tag" data-i18n="why.tag">Nuestra diferencia</span>
+        <h2 data-i18n="why.title">¿Por qué EasyTechPR?</h2>
+        <p data-i18n="why.sub">No somos solo técnicos — somos tu socio tecnológico.</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-num">01</div>
+          <h3 data-i18n="why.r1.title">Soluciones simples</h3>
+          <p data-i18n="why.r1.desc">Traducimos el lenguaje técnico en soluciones que tu equipo puede entender y usar desde el primer día.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-num">02</div>
+          <h3 data-i18n="why.r2.title">Enfocados en tu negocio</h3>
+          <p data-i18n="why.r2.desc">Cada solución está diseñada con tus objetivos en mente, no solamente para instalar tecnología.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-num">03</div>
+          <h3 data-i18n="why.r3.title">Respuesta rápida</h3>
+          <p data-i18n="why.r3.desc">Soporte local en Puerto Rico con tiempos de respuesta reales — cuando hay un problema, estamos ahí.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-num">04</div>
+          <h3 data-i18n="why.r4.title">Precios transparentes</h3>
+          <p data-i18n="why.r4.desc">Sin sorpresas ni letra pequeña. Sabes exactamente lo que pagas y lo que obtienes.</p>
+        </div>
+      </div>
+
+      <div class="why-cta">
+        <a href="#contact" class="btn btn-primary" data-i18n="why.cta">Comienza hoy</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ─── -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag" data-i18n="contact.tag">Hablemos</span>
+        <h2 data-i18n="contact.title">Contáctanos</h2>
+        <p data-i18n="contact.sub">Cuéntanos sobre tu negocio y cómo podemos ayudarte.</p>
+      </div>
+
+      <div class="contact-wrap">
+        <div class="contact-info">
+          <div class="info-item">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <span class="info-label" data-i18n="contact.email">Email</span>
+              <a href="mailto:info@easytechpr.com">info@easytechpr.com</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <span class="info-label" data-i18n="contact.phone">Teléfono</span>
+              <a href="tel:+17875550000">(787) 555-0000</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <span class="info-label" data-i18n="contact.location">Ubicación</span>
+              <span>Puerto Rico, PR</span>
+            </div>
+          </div>
+
+          <div class="contact-gradient-box">
+            <p data-i18n="contact.promise">Respondemos en menos de 24 horas. Tu negocio no puede esperar, y nosotros lo sabemos.</p>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label for="name" data-i18n="form.name">Nombre / Empresa</label>
+            <input type="text" id="name" name="name" required autocomplete="organization" />
+          </div>
+          <div class="form-group">
+            <label for="email" data-i18n="form.email">Correo electrónico</label>
+            <input type="email" id="email" name="email" required autocomplete="email" />
+          </div>
+          <div class="form-group">
+            <label for="service" data-i18n="form.service">Servicio de interés</label>
+            <select id="service" name="service">
+              <option value="" data-i18n="form.select">-- Selecciona un servicio --</option>
+              <option value="it" data-i18n="svc.it.title">Soporte IT</option>
+              <option value="net" data-i18n="svc.net.title">Redes y Wi-Fi</option>
+              <option value="sec" data-i18n="svc.sec.title">Ciberseguridad</option>
+              <option value="app" data-i18n="svc.app.title">Desarrollo de Aplicaciones</option>
+              <option value="con" data-i18n="svc.con.title">Consultoría Tecnológica</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message" data-i18n="form.message">Mensaje</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" data-i18n="form.submit">Enviar mensaje</button>
+          <p class="form-success" id="formSuccess" data-i18n="form.success">¡Mensaje enviado! Te contactaremos pronto.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <svg class="logo-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="fOrange" x1="30" y1="20" x2="90" y2="100" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#FFB800"/><stop offset="100%" stop-color="#FF6B00"/>
+              </linearGradient>
+              <linearGradient id="fGreen" x1="10" y1="10" x2="80" y2="70" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#7ED321"/><stop offset="100%" stop-color="#4AAD00"/>
+              </linearGradient>
+              <linearGradient id="fPink" x1="40" y1="70" x2="100" y2="110" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#E91E8C"/><stop offset="100%" stop-color="#C2185B"/>
+              </linearGradient>
+            </defs>
+            <path d="M60 8 C28 8 8 32 8 60 C8 88 28 112 60 112 C80 112 96 102 106 86 L88 78 C82 88 72 94 60 94 C38 94 26 78 26 60 C26 42 38 26 60 26 C72 26 82 32 88 42 L106 34 C96 18 80 8 60 8 Z" fill="url(#fOrange)"/>
+            <path d="M60 8 C80 8 96 18 106 34 L88 42 C82 32 72 26 60 26 C46 26 35 33 28 44 L10 36 C20 20 38 8 60 8 Z" fill="url(#fGreen)"/>
+            <path d="M88 78 L106 86 C100 96 90 104 78 108 L70 92 C76 89 83 84 88 78 Z" fill="url(#fPink)"/>
+            <ellipse cx="62" cy="38" rx="10" ry="6" fill="white" opacity="0.9"/>
+          </svg>
+          <div>
+            <span class="logo-text">easytechpr</span>
+            <small data-i18n="footer.slogan">Simplificando la Tecnología</small>
+          </div>
+        </div>
+        <p class="footer-copy" data-i18n="footer.copy">© 2025 EasyTechPR. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
