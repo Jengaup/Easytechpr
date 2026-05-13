@@ -1,3 +1,20 @@
+/* ─── SKIP LINK (accesibilidad) ─── */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 8px;
+  z-index: 9999;
+  padding: 10px 20px;
+  background: var(--orange);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 0 0 8px 0;
+  text-decoration: none;
+  transition: left 0.2s;
+}
+.skip-link:focus { left: 0; outline: 3px solid var(--yellow); }
+
 /* ─── RESET & BASE ─── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -560,18 +577,37 @@ h3 { font-size: 1.15rem; font-weight: 700; }
 .form-group textarea { resize: vertical; min-height: 110px; }
 .form-group select option { background: var(--dark2); color: var(--text); }
 
-.form-success {
+.form-success,
+.form-error {
   display: none;
   text-align: center;
-  color: var(--green-lt);
   font-weight: 600;
   font-size: 0.9rem;
   padding: 12px;
   border-radius: 10px;
+}
+.form-success {
+  color: var(--green-lt);
   background: rgba(74,173,0,0.1);
   border: 1px solid rgba(74,173,0,0.2);
 }
-.form-success.show { display: block; }
+.form-error {
+  color: #ff6b6b;
+  background: rgba(255,107,107,0.1);
+  border: 1px solid rgba(255,107,107,0.25);
+}
+.form-success.show,
+.form-error.show { display: block; }
+
+/* Honeypot: visually hidden, still in DOM for bots */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 
 /* ─── FOOTER ─── */
 .footer {

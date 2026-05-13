@@ -57,6 +57,8 @@ const translations = {
     "form.message": "Mensaje",
     "form.submit": "Enviar mensaje",
     "form.success": "¡Mensaje enviado! Te contactaremos pronto.",
+    "form.error.server": "Error al enviar. Intenta de nuevo.",
+    "form.error.network": "Error de red. Verifica tu conexión.",
     "footer.slogan": "Simplificando la Tecnología",
     "footer.copy": "© 2025 EasyTechPR. Todos los derechos reservados.",
   },
@@ -117,10 +119,15 @@ const translations = {
     "form.message": "Message",
     "form.submit": "Send message",
     "form.success": "Message sent! We'll be in touch soon.",
+    "form.error.server": "Send error. Please try again.",
+    "form.error.network": "Network error. Check your connection.",
     "footer.slogan": "Simplifying Technology",
     "footer.copy": "© 2025 EasyTechPR. All rights reserved.",
   }
 };
+
+/* Keys that intentionally contain trusted HTML (e.g. <br />) */
+const HTML_KEYS = new Set(["hero.sub"]);
 
 let lang = "es";
 
@@ -131,8 +138,10 @@ function applyLang() {
     if (!t[key]) return;
     if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
       el.placeholder = t[key];
-    } else {
+    } else if (HTML_KEYS.has(key)) {
       el.innerHTML = t[key];
+    } else {
+      el.textContent = t[key];
     }
   });
   document.documentElement.lang = lang;
@@ -155,19 +164,26 @@ window.addEventListener("scroll", () => {
 const hamburger = document.getElementById("hamburger");
 const navLinks  = document.getElementById("navLinks");
 hamburger.addEventListener("click", () => {
-  navLinks.classList.toggle("open");
+  const isOpen = navLinks.classList.toggle("open");
+  hamburger.setAttribute("aria-expanded", isOpen);
 });
 navLinks.querySelectorAll("a").forEach(a => {
-  a.addEventListener("click", () => navLinks.classList.remove("open"));
+  a.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    hamburger.setAttribute("aria-expanded", "false");
+  });
 });
 
 /* ─── PARTICLES ─── */
 const colors = ["#FF6B00","#FFB800","#4AAD00","#E91E8C","#7ED321","#FF8C00"];
 const container = document.getElementById("particles");
+const MAX_PARTICLES = 40;
 
 function createParticle() {
+  if (container.childElementCount >= MAX_PARTICLES) return;
   const p = document.createElement("div");
   p.className = "particle";
+  p.setAttribute("aria-hidden", "true");
   const size = 4 + Math.random() * 8;
   p.style.cssText = `
     width:${size}px; height:${size}px;
@@ -198,15 +214,62 @@ document.querySelectorAll(".service-card, .why-card, .contact-wrap").forEach(el 
   observer.observe(el);
 });
 
+/* ─── DEBOUNCE ─── */
+function debounce(fn, delay) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn(...args), delay);
+  };
+}
+
+/* ─── ACTIVE NAV LINKS ─── */
+const sections = document.querySelectorAll("section[id]");
+window.addEventListener("scroll", debounce(() => {
+  const scrollY = window.scrollY + 100;
+  sections.forEach(sec => {
+    const top = sec.offsetTop;
+    const h   = sec.offsetHeight;
+    const link = document.querySelector(`.nav-links a[href="#${sec.id}"]`);
+    if (link) link.style.color = scrollY >= top && scrollY < top + h ? "var(--orange)" : "";
+  });
+}, 16), { passive: true });
+
+/* ─── EMAIL OBFUSCATION ─── */
+document.querySelectorAll("[data-email]").forEach(el => {
+  const addr = el.dataset.email + "@" + el.dataset.domain;
+  el.href = "mailto:" + addr;
+  if (!el.textContent.trim()) el.textContent = addr;
+});
+
+/* Set form action via JS to avoid email exposure in HTML */
+(function () {
+  const form = document.getElementById("contactForm");
+  const parts = ["jose", "easytechpr.com"];
+  form.action = "https://formsubmit.co/" + parts[0] + "@" + parts[1];
+})();
+
 /* ─── FORM ─── */
+const formError = document.getElementById("formError");
+
+function showFormError(msg) {
+  formError.textContent = msg;
+  formError.classList.add("show");
+  setTimeout(() => formError.classList.remove("show"), 6000);
+}
+
 document.getElementById("contactForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const form    = e.target;
   const btn     = form.querySelector("button[type=submit]");
   const success = document.getElementById("formSuccess");
 
+  /* Honeypot check: if the hidden field was filled, silently abort */
+  if (form.querySelector("[name=_honey]")?.value) return;
+
   btn.disabled = true;
   btn.textContent = lang === "es" ? "Enviando…" : "Sending…";
+  formError.classList.remove("show");
 
   try {
     const data = new FormData(form);
@@ -216,24 +279,14 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
       form.reset();
       setTimeout(() => success.classList.remove("show"), 6000);
     } else {
-      alert(lang === "es" ? "Error al enviar. Intenta de nuevo." : "Send error. Please try again.");
+      console.error("Form submission failed:", res.status, res.statusText);
+      showFormError(translations[lang]["form.error.server"]);
     }
-  } catch {
-    alert(lang === "es" ? "Error de red. Verifica tu conexión." : "Network error. Check your connection.");
+  } catch (err) {
+    console.error("Form submission error:", err);
+    showFormError(translations[lang]["form.error.network"]);
   } finally {
     btn.disabled = false;
     btn.textContent = translations[lang]["form.submit"];
   }
 });
-
-/* ─── ACTIVE NAV LINKS ─── */
-const sections = document.querySelectorAll("section[id]");
-window.addEventListener("scroll", () => {
-  const scrollY = window.scrollY + 100;
-  sections.forEach(sec => {
-    const top = sec.offsetTop;
-    const h   = sec.offsetHeight;
-    const link = document.querySelector(`.nav-links a[href="#${sec.id}"]`);
-    if (link) link.style.color = scrollY >= top && scrollY < top + h ? "var(--orange)" : "";
-  });
-}, { passive: true });
