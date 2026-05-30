@@ -411,5 +411,133 @@ window.addEventListener("scroll", () => {
   });
 }, { passive: true });
 
+/* ─── PARTICLE NETWORK CANVAS ─── */
+(function () {
+  const canvas  = document.getElementById("netCanvas");
+  if (!canvas) return;
+  const section = canvas.closest(".network-section");
+  const ctx     = canvas.getContext("2d");
+
+  const COUNT        = 75;
+  const CONNECT_DIST = 130;
+  const MOUSE_R      = 170;
+  const mouse        = { x: null, y: null };
+  let   animId       = null;
+  let   running      = false;
+
+  function resize() {
+    canvas.width  = section.offsetWidth;
+    canvas.height = section.offsetHeight;
+  }
+  window.addEventListener("resize", resize, { passive: true });
+  resize();
+
+  class Dot {
+    constructor() { this.init(); }
+    init() {
+      this.x  = Math.random() * canvas.width;
+      this.y  = Math.random() * canvas.height;
+      this.vx = (Math.random() - 0.5) * 0.45;
+      this.vy = (Math.random() - 0.5) * 0.45;
+      this.r  = 1.4 + Math.random() * 1.4;
+    }
+    tick() {
+      if (mouse.x !== null) {
+        const dx   = this.x - mouse.x;
+        const dy   = this.y - mouse.y;
+        const dist = Math.hypot(dx, dy);
+        if (dist < MOUSE_R && dist > 0) {
+          const f = (MOUSE_R - dist) / MOUSE_R * 0.13;
+          this.vx += (dx / dist) * f;
+          this.vy += (dy / dist) * f;
+        }
+      }
+      const spd = Math.hypot(this.vx, this.vy);
+      if (spd > 1.6) { this.vx = this.vx / spd * 1.6; this.vy = this.vy / spd * 1.6; }
+      this.vx *= 0.993;
+      this.vy *= 0.993;
+      this.x  += this.vx;
+      this.y  += this.vy;
+      if (this.x < 0) this.x = canvas.width;
+      if (this.x > canvas.width)  this.x = 0;
+      if (this.y < 0) this.y = canvas.height;
+      if (this.y > canvas.height) this.y = 0;
+    }
+  }
+
+  const dots = Array.from({ length: COUNT }, () => new Dot());
+
+  function frame() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < dots.length; i++) {
+      dots[i].tick();
+
+      /* draw dot */
+      ctx.beginPath();
+      ctx.arc(dots[i].x, dots[i].y, dots[i].r, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(255,107,0,0.8)";
+      ctx.fill();
+
+      /* draw connecting lines */
+      for (let j = i + 1; j < dots.length; j++) {
+        const dx   = dots[i].x - dots[j].x;
+        const dy   = dots[i].y - dots[j].y;
+        const dist = Math.hypot(dx, dy);
+        if (dist < CONNECT_DIST) {
+          const alpha = (1 - dist / CONNECT_DIST) * 0.22;
+          ctx.beginPath();
+          ctx.moveTo(dots[i].x, dots[i].y);
+          ctx.lineTo(dots[j].x, dots[j].y);
+          ctx.strokeStyle = `rgba(255,107,0,${alpha})`;
+          ctx.lineWidth = 0.7;
+          ctx.stroke();
+        }
+      }
+
+      /* glow dot near mouse */
+      if (mouse.x !== null) {
+        const dist = Math.hypot(dots[i].x - mouse.x, dots[i].y - mouse.y);
+        if (dist < MOUSE_R) {
+          ctx.beginPath();
+          ctx.arc(dots[i].x, dots[i].y, dots[i].r * 2.5, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255,173,0,${(1 - dist / MOUSE_R) * 0.35})`;
+          ctx.fill();
+
+          /* extra line from dot to mouse */
+          ctx.beginPath();
+          ctx.moveTo(dots[i].x, dots[i].y);
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.strokeStyle = `rgba(255,107,0,${(1 - dist / MOUSE_R) * 0.15})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+
+    animId = requestAnimationFrame(frame);
+  }
+
+  section.addEventListener("mousemove", e => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+  });
+  section.addEventListener("mouseleave", () => { mouse.x = null; mouse.y = null; });
+
+  /* Pause when off-screen for performance */
+  new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !running) {
+        running = true;
+        frame();
+      } else if (!e.isIntersecting && running) {
+        running = false;
+        cancelAnimationFrame(animId);
+      }
+    });
+  }, { threshold: 0.05 }).observe(section);
+})();
+
 /* ─── INIT ─── */
 heroEntrance();
