@@ -256,14 +256,29 @@ document.querySelectorAll("[data-reveal]").forEach(el => revealObserver.observe(
 
 /* ─── 3D TILT ON CARDS ─── */
 document.querySelectorAll(".service-card").forEach(card => {
+  let rafId = null;
+  let tx = 0, ty = 0;
+
   card.addEventListener("mousemove", e => {
     const rect = card.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width  - 0.5;
     const y = (e.clientY - rect.top)  / rect.height - 0.5;
-    card.style.transform = `perspective(600px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) translateY(-6px)`;
+    tx = x * 12; ty = -y * 12;
+
+    if (!rafId) {
+      rafId = requestAnimationFrame(function tick() {
+        card.style.transform = `perspective(700px) rotateY(${tx}deg) rotateX(${ty}deg) translateY(-6px)`;
+        rafId = null;
+      });
+    }
   });
+
   card.addEventListener("mouseleave", () => {
+    cancelAnimationFrame(rafId);
+    rafId = null;
+    card.style.transition = "transform 0.5s cubic-bezier(0.23,1,0.32,1), border-color 0.3s, box-shadow 0.3s";
     card.style.transform = "";
+    setTimeout(() => { card.style.transition = ""; }, 500);
   });
 });
 
