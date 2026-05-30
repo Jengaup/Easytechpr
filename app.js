@@ -1,3 +1,6 @@
+/* ─── MOTION ─── */
+const { animate, inView, scroll, stagger, spring } = Motion;
+
 /* ─── i18n ─── */
 const translations = {
   es: {
@@ -127,7 +130,6 @@ const translations = {
 };
 
 let lang = "es";
-
 const HTML_KEYS = new Set(["hero.sub", "testi.q1", "testi.q2", "testi.q3"]);
 
 function applyLang() {
@@ -152,6 +154,10 @@ document.getElementById("langToggle").addEventListener("click", () => {
   lang = lang === "es" ? "en" : "es";
   applyLang();
   startTypewriter();
+  animate("#langToggle", { scale: [0.88, 1] }, {
+    duration: 0.4,
+    easing: spring({ stiffness: 400, damping: 15 })
+  });
 });
 
 /* ─── NAVBAR SCROLL ─── */
@@ -165,32 +171,35 @@ const hamburger = document.getElementById("hamburger");
 const navLinks  = document.getElementById("navLinks");
 hamburger.addEventListener("click", () => {
   navLinks.classList.toggle("open");
+  animate("#hamburger", { scale: [0.85, 1] }, {
+    duration: 0.3,
+    easing: spring({ stiffness: 400, damping: 18 })
+  });
 });
 navLinks.querySelectorAll("a").forEach(a => {
   a.addEventListener("click", () => navLinks.classList.remove("open"));
 });
 
 /* ─── PARTICLES ─── */
-const colors = ["#FF6B00","#FFB800","#4AAD00","#E91E8C","#7ED321","#FF8C00"];
-const container = document.getElementById("particles");
+const colors = ["#FF6B00","#FFAD00","#22C55E","#F43F8D","#4ADE80","#FF8C00"];
+const particleContainer = document.getElementById("particles");
 
 function createParticle() {
   const p = document.createElement("div");
   p.className = "particle";
-  const size = 4 + Math.random() * 8;
+  const size = 3 + Math.random() * 7;
   p.style.cssText = `
     width:${size}px; height:${size}px;
     left:${Math.random()*100}%;
     background:${colors[Math.floor(Math.random()*colors.length)]};
-    animation-duration:${8+Math.random()*12}s;
+    animation-duration:${9+Math.random()*13}s;
     animation-delay:${Math.random()*8}s;
   `;
-  container.appendChild(p);
-  setTimeout(() => p.remove(), 20000);
+  particleContainer.appendChild(p);
+  setTimeout(() => p.remove(), 22000);
 }
-
-for (let i = 0; i < 20; i++) createParticle();
-setInterval(createParticle, 1200);
+for (let i = 0; i < 18; i++) createParticle();
+setInterval(createParticle, 1400);
 
 /* ─── TYPEWRITER ─── */
 let typewriterTimer = null;
@@ -206,67 +215,105 @@ function startTypewriter() {
     if (i <= text.length) {
       el.innerHTML = text.slice(0, i) + '<span class="tw-cursor"></span>';
       i++;
-      typewriterTimer = setTimeout(type, 45);
+      typewriterTimer = setTimeout(type, 44);
     }
   }
   type();
 }
 
-/* ─── ANIMATED COUNTERS ─── */
-function animateCounter(el) {
-  const target = parseInt(el.getAttribute("data-count"), 10);
-  const duration = 1800;
-  const step = 16;
-  const increments = Math.ceil(duration / step);
-  let current = 0;
-  const timer = setInterval(() => {
-    current++;
-    el.textContent = Math.round((target / increments) * current);
-    if (current >= increments) {
-      el.textContent = target;
-      clearInterval(timer);
-    }
-  }, step);
+/* ─── HERO ENTRANCE (Motion sequence) ─── */
+async function heroEntrance() {
+  // Badge slides down into view
+  await animate(".hero-badge",
+    { opacity: [0, 1], y: [-14, 0] },
+    { duration: 0.5, easing: [0.22, 1, 0.36, 1] }
+  ).finished;
+
+  // Logo bounces in with spring
+  await animate(".hero-logo-wrap",
+    { opacity: [0, 1], scale: [0.7, 1] },
+    { duration: 0.6, easing: spring({ stiffness: 220, damping: 15 }) }
+  ).finished;
+
+  // Make h1 visible, then kick off typewriter
+  animate("#typewriterTarget", { opacity: [0, 1] }, { duration: 0.01 });
+  startTypewriter();
+
+  // Sub-text, CTAs, stats stagger in
+  animate(".hero-sub",
+    { opacity: [0, 1], y: [18, 0] },
+    { duration: 0.55, delay: 0.35, easing: [0.22, 1, 0.36, 1] }
+  );
+  animate(".hero-cta",
+    { opacity: [0, 1], y: [18, 0] },
+    { duration: 0.55, delay: 0.52, easing: [0.22, 1, 0.36, 1] }
+  );
+  animate(".hero-stats",
+    { opacity: [0, 1], y: [14, 0] },
+    { duration: 0.55, delay: 0.68, easing: [0.22, 1, 0.36, 1] }
+  );
+  animate(".hero-scroll",
+    { opacity: [0, 0.7], y: [10, 0] },
+    { duration: 0.4, delay: 1.1, easing: [0.22, 1, 0.36, 1] }
+  );
 }
 
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting && !e.target.dataset.counted) {
-      e.target.dataset.counted = "1";
-      animateCounter(e.target);
-      counterObserver.unobserve(e.target);
-    }
+/* ─── HERO PARALLAX (Motion scroll-linked) ─── */
+scroll(
+  animate(".hero-content", { y: [0, 70] }),
+  { target: document.querySelector(".hero"), offset: ["start start", "end start"] }
+);
+
+/* ─── SCROLL REVEAL (Motion inView + animate, replaces IntersectionObserver) ─── */
+document.querySelectorAll("[data-reveal]").forEach(el => {
+  const delay = parseFloat(el.dataset.revealDelay || "0") / 1000;
+  inView(el, () => {
+    animate(el,
+      { opacity: [0, 1], y: [32, 0] },
+      { duration: 0.65, delay, easing: [0.22, 1, 0.36, 1] }
+    );
+  }, { amount: 0.12 });
+});
+
+/* ─── ANIMATED COUNTERS (Motion animate with onUpdate) ─── */
+inView("[data-count]", ({ target }) => {
+  if (target.dataset.counted) return;
+  target.dataset.counted = "1";
+  const to = parseInt(target.getAttribute("data-count"), 10);
+  animate(0, to, {
+    duration: 1.8,
+    easing: [0.22, 1, 0.36, 1],
+    onUpdate: v => { target.textContent = Math.round(v); }
   });
-}, { threshold: 0.5 });
+}, { amount: 0.5 });
 
-document.querySelectorAll("[data-count]").forEach(el => counterObserver.observe(el));
-
-/* ─── SCROLL REVEAL ─── */
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      const delay = e.target.dataset.revealDelay || 0;
-      setTimeout(() => e.target.classList.add("revealed"), parseInt(delay));
-      revealObserver.unobserve(e.target);
-    }
+/* ─── CARD HOVER SPRINGS (Why + Testimonial cards) ─── */
+document.querySelectorAll(".why-card, .testimonial-card").forEach(card => {
+  card.addEventListener("mouseenter", () => {
+    animate(card, { y: -6 }, {
+      duration: 0.4,
+      easing: spring({ stiffness: 260, damping: 18 })
+    });
   });
-}, { threshold: 0.1 });
+  card.addEventListener("mouseleave", () => {
+    animate(card, { y: 0 }, {
+      duration: 0.4,
+      easing: spring({ stiffness: 300, damping: 22 })
+    });
+  });
+});
 
-document.querySelectorAll("[data-reveal]").forEach(el => revealObserver.observe(el));
-
-/* ─── 3D TILT ON CARDS ─── */
+/* ─── 3D TILT ON SERVICE CARDS ─── */
 document.querySelectorAll(".service-card").forEach(card => {
-  let rafId = null;
-  let tx = 0, ty = 0;
+  let tx = 0, ty = 0, rafId = null;
 
   card.addEventListener("mousemove", e => {
     const rect = card.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width  - 0.5;
-    const y = (e.clientY - rect.top)  / rect.height - 0.5;
-    tx = x * 12; ty = -y * 12;
+    tx = ((e.clientX - rect.left) / rect.width - 0.5) * 12;
+    ty = -((e.clientY - rect.top) / rect.height - 0.5) * 12;
 
     if (!rafId) {
-      rafId = requestAnimationFrame(function tick() {
+      rafId = requestAnimationFrame(() => {
         card.style.transform = `perspective(700px) rotateY(${tx}deg) rotateX(${ty}deg) translateY(-6px)`;
         rafId = null;
       });
@@ -276,9 +323,48 @@ document.querySelectorAll(".service-card").forEach(card => {
   card.addEventListener("mouseleave", () => {
     cancelAnimationFrame(rafId);
     rafId = null;
-    card.style.transition = "transform 0.5s cubic-bezier(0.23,1,0.32,1), border-color 0.3s, box-shadow 0.3s";
+    // Snapshot current values then spring back via Motion
+    const fromX = tx, fromY = ty;
+    tx = 0; ty = 0;
     card.style.transform = "";
-    setTimeout(() => { card.style.transition = ""; }, 500);
+    animate(card,
+      { rotateY: [fromX, 0], rotateX: [fromY, 0], y: [-6, 0] },
+      { easing: spring({ stiffness: 200, damping: 22 }) }
+    );
+  });
+});
+
+/* ─── BUTTON PRESS FEEDBACK ─── */
+document.querySelectorAll(".btn").forEach(btn => {
+  btn.addEventListener("mousedown", () => {
+    animate(btn, { scale: 0.95 }, { duration: 0.12, easing: [0.22, 1, 0.36, 1] });
+  });
+  btn.addEventListener("mouseup", () => {
+    animate(btn, { scale: 1 }, {
+      duration: 0.35,
+      easing: spring({ stiffness: 400, damping: 16 })
+    });
+  });
+  btn.addEventListener("mouseleave", () => {
+    animate(btn, { scale: 1 }, { duration: 0.2 });
+  });
+});
+
+/* ─── INFO ICON HOVER ─── */
+document.querySelectorAll(".info-item").forEach(item => {
+  const icon = item.querySelector(".info-icon");
+  if (!icon) return;
+  item.addEventListener("mouseenter", () => {
+    animate(icon, { scale: 1.1, rotate: -5 }, {
+      duration: 0.35,
+      easing: spring({ stiffness: 350, damping: 15 })
+    });
+  });
+  item.addEventListener("mouseleave", () => {
+    animate(icon, { scale: 1, rotate: 0 }, {
+      duration: 0.3,
+      easing: spring({ stiffness: 350, damping: 20 })
+    });
   });
 });
 
@@ -291,12 +377,14 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
 
   btn.disabled = true;
   btn.textContent = lang === "es" ? "Enviando…" : "Sending…";
+  animate(btn, { scale: [1, 0.97] }, { duration: 0.1 });
 
   try {
     const data = new FormData(form);
     const res  = await fetch(form.action, { method: "POST", body: data, headers: { Accept: "application/json" } });
     if (res.ok) {
       success.classList.add("show");
+      animate(success, { opacity: [0, 1], y: [-8, 0] }, { duration: 0.4, easing: [0.22, 1, 0.36, 1] });
       form.reset();
       setTimeout(() => success.classList.remove("show"), 6000);
     } else {
@@ -307,6 +395,7 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
   } finally {
     btn.disabled = false;
     btn.textContent = translations[lang]["form.submit"];
+    animate(btn, { scale: 1 }, { duration: 0.3, easing: spring({ stiffness: 400, damping: 20 }) });
   }
 });
 
@@ -315,12 +404,12 @@ const sections = document.querySelectorAll("section[id]");
 window.addEventListener("scroll", () => {
   const scrollY = window.scrollY + 100;
   sections.forEach(sec => {
-    const top = sec.offsetTop;
-    const h   = sec.offsetHeight;
+    const top  = sec.offsetTop;
+    const h    = sec.offsetHeight;
     const link = document.querySelector(`.nav-links a[href="#${sec.id}"]`);
     if (link) link.style.color = scrollY >= top && scrollY < top + h ? "var(--orange)" : "";
   });
 }, { passive: true });
 
 /* ─── INIT ─── */
-startTypewriter();
+heroEntrance();
