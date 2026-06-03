@@ -221,40 +221,36 @@ function startTypewriter() {
   type();
 }
 
-/* ─── HERO ENTRANCE (Motion sequence) ─── */
-async function heroEntrance() {
-  // Badge slides down into view
-  await animate(".hero-badge",
-    { opacity: [0, 1], y: [-14, 0] },
-    { duration: 0.5, easing: [0.22, 1, 0.36, 1] }
-  ).finished;
-
-  // Logo bounces in with spring
-  await animate(".hero-logo-wrap",
-    { opacity: [0, 1], scale: [0.7, 1] },
-    { duration: 0.6, easing: spring({ stiffness: 220, damping: 15 }) }
-  ).finished;
-
-  // Make h1 visible, then kick off typewriter
-  animate("#typewriterTarget", { opacity: [0, 1] }, { duration: 0.01 });
-  startTypewriter();
-
-  // Sub-text, CTAs, stats stagger in
+/* ─── HERO ENTRANCE (Motion — all parallel with staggered delays) ─── */
+function heroEntrance() {
+  animate(".hero-badge",
+    { opacity: [0, 1], y: [-10, 0] },
+    { duration: 0.5, delay: 0.05, easing: [0.22, 1, 0.36, 1] }
+  );
+  animate(".hero-logo-wrap",
+    { opacity: [0, 1], scale: [0.82, 1] },
+    { duration: 0.6, delay: 0.15, easing: spring({ stiffness: 200, damping: 16 }) }
+  );
+  // Make h1 visible and start typewriter after short delay
+  setTimeout(() => {
+    animate("#typewriterTarget", { opacity: 1 }, { duration: 0 });
+    startTypewriter();
+  }, 280);
   animate(".hero-sub",
-    { opacity: [0, 1], y: [18, 0] },
-    { duration: 0.55, delay: 0.35, easing: [0.22, 1, 0.36, 1] }
+    { opacity: [0, 1], y: [16, 0] },
+    { duration: 0.5, delay: 0.45, easing: [0.22, 1, 0.36, 1] }
   );
   animate(".hero-cta",
-    { opacity: [0, 1], y: [18, 0] },
-    { duration: 0.55, delay: 0.52, easing: [0.22, 1, 0.36, 1] }
+    { opacity: [0, 1], y: [16, 0] },
+    { duration: 0.5, delay: 0.6, easing: [0.22, 1, 0.36, 1] }
   );
   animate(".hero-stats",
-    { opacity: [0, 1], y: [14, 0] },
-    { duration: 0.55, delay: 0.68, easing: [0.22, 1, 0.36, 1] }
+    { opacity: [0, 1], y: [12, 0] },
+    { duration: 0.5, delay: 0.75, easing: [0.22, 1, 0.36, 1] }
   );
   animate(".hero-scroll",
-    { opacity: [0, 0.7], y: [10, 0] },
-    { duration: 0.4, delay: 1.1, easing: [0.22, 1, 0.36, 1] }
+    { opacity: [0, 0.6] },
+    { duration: 0.4, delay: 1.0, easing: [0.22, 1, 0.36, 1] }
   );
 }
 
