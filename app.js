@@ -255,33 +255,33 @@ function heroEntrance() {
 }
 
 /* ─── HERO PARALLAX (Motion scroll-linked) ─── */
-scroll(
-  animate(".hero-content", { y: [0, 70] }),
-  { target: document.querySelector(".hero"), offset: ["start start", "end start"] }
-);
+// Removed — caused visual jump on page load
 
-/* ─── SCROLL REVEAL (Motion inView + animate, replaces IntersectionObserver) ─── */
-document.querySelectorAll("[data-reveal]").forEach(el => {
-  const delay = parseFloat(el.dataset.revealDelay || "0") / 1000;
-  inView(el, () => {
-    animate(el,
-      { opacity: [0, 1], y: [32, 0] },
-      { duration: 0.65, delay, easing: [0.22, 1, 0.36, 1] }
-    );
-  }, { amount: 0.12 });
-});
+/* ─── SCROLL REVEAL (CSS transitions + IntersectionObserver — no Motion dependency) ─── */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const delay = e.target.dataset.revealDelay || 0;
+      setTimeout(() => e.target.classList.add("revealed"), parseInt(delay));
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll("[data-reveal]").forEach(el => revealObserver.observe(el));
 
 /* ─── ANIMATED COUNTERS (Motion animate with onUpdate) ─── */
-inView("[data-count]", ({ target }) => {
-  if (target.dataset.counted) return;
-  target.dataset.counted = "1";
-  const to = parseInt(target.getAttribute("data-count"), 10);
-  animate(0, to, {
-    duration: 1.8,
-    easing: [0.22, 1, 0.36, 1],
-    onUpdate: v => { target.textContent = Math.round(v); }
-  });
-}, { amount: 0.5 });
+document.querySelectorAll("[data-count]").forEach(el => {
+  inView(el, () => {
+    if (el.dataset.counted) return;
+    el.dataset.counted = "1";
+    const to = parseInt(el.getAttribute("data-count"), 10);
+    animate(0, to, {
+      duration: 1.8,
+      easing: [0.22, 1, 0.36, 1],
+      onUpdate: v => { el.textContent = Math.round(v); }
+    });
+  }, { amount: 0.5 });
+});
 
 /* ─── CARD HOVER SPRINGS (Why + Testimonial cards) ─── */
 document.querySelectorAll(".why-card, .testimonial-card").forEach(card => {
