@@ -544,7 +544,21 @@ h3 { font-size: 1.1rem; font-weight: 600; letter-spacing: -0.02em; }
   box-shadow: 0 0 0 3px rgba(255,107,0,0.08);
 }
 .form-group textarea { resize: vertical; min-height: 115px; }
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%237E8599' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+  cursor: pointer;
+}
 .form-group select option { background: #080811; color: var(--text); }
+.form-note {
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+}
 .form-success {
   display: none; text-align: center; color: var(--green-lt); font-weight: 600; font-size: 0.88rem;
   padding: 13px; border-radius: var(--radius-sm);
@@ -561,6 +575,35 @@ h3 { font-size: 1.1rem; font-weight: 600; letter-spacing: -0.02em; }
 .footer-brand .logo-img { width: 30px; height: 30px; object-fit: contain; }
 .footer-brand small { display: block; font-size: 0.7rem; color: var(--muted); margin-top: 1px; }
 .footer-copy { color: var(--muted); font-size: 0.78rem; }
+
+/* ─── HERO CALL LINK (mobile phone shortcut) ─── */
+.hero-call-link {
+  display: none;
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: -40px;
+  margin-bottom: 48px;
+}
+.hero-call-link a {
+  color: var(--orange);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 768px) {
+  .hero-call-link { display: block; }
+}
+
+/* ─── CONTACT INFO WA ICON ─── */
+.info-icon-wa { background: rgba(37,211,102,0.07) !important; border-color: rgba(37,211,102,0.2) !important; color: #25D366 !important; }
+
+/* ─── KEYBOARD ACCESSIBILITY ─── */
+:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+a:focus-visible, button:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
 
 /* ─── SCROLL REVEAL (CSS transitions + JS .revealed class — no Motion dependency) ─── */
 [data-reveal] {

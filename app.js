@@ -62,8 +62,10 @@ const translations = {
     "form.message": "Mensaje",
     "form.submit": "Enviar mensaje",
     "form.success": "¡Mensaje enviado! Te contactaremos pronto.",
+    "hero.call": "o llámanos directamente:",
     "footer.slogan": "Tu negocio merece tecnología que sí funciona",
-    "footer.copy": "© 2025 EasyTechPR. Todos los derechos reservados.",
+    "footer.copy": "© 2026 EasyTechPR. Todos los derechos reservados.",
+    "form.note": "Sin compromiso · Primera consulta gratis · Respondemos hoy",
   },
   en: {
     "nav.services": "Services",
@@ -124,8 +126,10 @@ const translations = {
     "form.message": "Message",
     "form.submit": "Send message",
     "form.success": "Message sent! We'll be in touch soon.",
+    "hero.call": "or call us directly:",
     "footer.slogan": "Your business deserves technology that actually works",
-    "footer.copy": "© 2025 EasyTechPR. All rights reserved.",
+    "footer.copy": "© 2026 EasyTechPR. All rights reserved.",
+    "form.note": "No commitment · Free first consultation · We respond today",
   }
 };
 
@@ -170,14 +174,20 @@ window.addEventListener("scroll", () => {
 const hamburger = document.getElementById("hamburger");
 const navLinks  = document.getElementById("navLinks");
 hamburger.addEventListener("click", () => {
-  navLinks.classList.toggle("open");
+  const isOpen = navLinks.classList.toggle("open");
+  hamburger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  hamburger.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
   animate("#hamburger", { scale: [0.85, 1] }, {
     duration: 0.3,
     easing: spring({ stiffness: 400, damping: 18 })
   });
 });
 navLinks.querySelectorAll("a").forEach(a => {
-  a.addEventListener("click", () => navLinks.classList.remove("open"));
+  a.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    hamburger.setAttribute("aria-expanded", "false");
+    hamburger.setAttribute("aria-label", "Abrir menú");
+  });
 });
 
 /* ─── PARTICLES ─── */
